@@ -1,0 +1,173 @@
+[
+  {
+    "Name": "gdg",
+    "BookType": "PDF",
+    "FileSize": "453 MB",
+    "PageCount": 345,
+    "UDC": "345.45",
+    "Year": 2024,
+    "UploadDate": "2024-02-12T18:18:14.4254439+03:00",
+    "Publisher": {
+      "Name": "wwwww",
+      "Country": "w",
+      "City": "w",
+      "YearFounded": 1955,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "53ec01d5-0e90-4eec-ab3e-a21a6f784f65",
+        "FullName": "re",
+        "Country": "er"
+      },
+      {
+        "ID": "6d2ef26d-aabb-4724-8e97-898b9742ca3c",
+        "FullName": "re",
+        "Country": "er"
+      }
+    ]
+  },
+  {
+    "Name": "4",
+    "BookType": "PDF",
+    "FileSize": "34 MB",
+    "PageCount": 432,
+    "UDC": "432",
+    "Year": 2024,
+    "UploadDate": "2024-02-12T18:21:12.4148047+03:00",
+    "Publisher": {
+      "Name": "4",
+      "Country": "",
+      "City": "",
+      "YearFounded": 0,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "c0b8d8a3-d55b-488f-aa0e-0d51b301f40e",
+        "FullName": "4",
+        "Country": ""
+      }
+    ]
+  },
+  {
+    "Name": "fdfs",
+    "BookType": "PDF",
+    "FileSize": "3423 MB",
+    "PageCount": 34,
+    "UDC": "342.234",
+    "Year": 2024,
+    "UploadDate": "2024-02-12T19:06:01.0344083+03:00",
+    "Publisher": {
+      "Name": "rwe",
+      "Country": "we",
+      "City": "423",
+      "YearFounded": 1929,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "2441709b-08b1-4d05-bedb-017a51b1a153",
+        "FullName": "rgrg",
+        "Country": "fgdg"
+      }
+    ]
+  },
+  {
+    "Name": "tre",
+    "BookType": "PDF",
+    "FileSize": "534 MB",
+    "PageCount": 345,
+    "UDC": "345.345",
+    "Year": 2016,
+    "UploadDate": "2024-02-13T18:14:59.776357+03:00",
+    "Publisher": {
+      "Name": "te",
+      "Country": "tretr",
+      "City": "tertr",
+      "YearFounded": 1958,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "9195cc3b-a38d-4aa1-b59e-878558a1f40c",
+        "FullName": "tret",
+        "Country": "tert"
+      }
+    ]
+  },
+  {
+    "Name": "ewrrewr",
+    "BookType": "PDF",
+    "FileSize": "343 GB",
+    "PageCount": 545,
+    "UDC": "453.45.45",
+    "Year": 2024,
+    "UploadDate": "2024-02-13T18:16:48.0257925+03:00",
+    "Publisher": {
+      "Name": "45",
+      "Country": "wer",
+      "City": "wer",
+      "YearFounded": 2004,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "1bdeef3b-0d0f-4c5a-a88d-c7fbf08eccb9",
+        "FullName": "r",
+        "Country": "erewrweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ]
+  },
+  {
+    "Name": "uu",
+    "BookType": "MOBI",
+    "FileSize": "9.77 GB",
+    "PageCount": 99,
+    "UDC": "23.45",
+    "Year": 2028,
+    "UploadDate": "2024-02-14T20:19:58.5278916+03:00",
+    "Publisher": {
+      "Name": "kkk",
+      "Country": "lll",
+      "City": "kkk",
+      "YearFounded": 2014,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "8ea5834d-2530-4b97-af75-c8432d2c2658",
+        "FullName": "iii",
+        "Country": "ppp"
+      }
+    ]
+  },
+  {
+    "Name": "5543gfgr",
+    "BookType": "PDF",
+    "FileSize": "53444 GB",
+    "PageCount": 54543,
+    "UDC": "4534.4555",
+    "Year": 2022,
+    "UploadDate": "2024-02-20T16:05:05.9392496+03:00",
+    "Publisher": {
+      "Name": "tre",
+      "Country": "re",
+      "City": "rte",
+      "YearFounded": 2014,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "c942197b-474e-4ec3-aee8-5d32f881491d",
+        "FullName": "rte",
+        "Country": "ret"
+      },
+      {
+        "ID": "4e5c3552-2b28-4728-b332-35ffa3671347",
+        "FullName": "rtrrt",
+        "Country": "rt"
+      }
+    ]
+  }
+]
