@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2", "2\2.csproj", "{5FBAC50
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3", "3\3.csproj", "{55614A69-C7E1-45C8-AF8A-3E2238CE0EA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaShop", "PizzaShop\PizzaShop.csproj", "{5FDDDE2F-92DB-4C4C-B2BE-1CFCE3A27AFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{55614A69-C7E1-45C8-AF8A-3E2238CE0EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55614A69-C7E1-45C8-AF8A-3E2238CE0EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55614A69-C7E1-45C8-AF8A-3E2238CE0EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FDDDE2F-92DB-4C4C-B2BE-1CFCE3A27AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FDDDE2F-92DB-4C4C-B2BE-1CFCE3A27AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FDDDE2F-92DB-4C4C-B2BE-1CFCE3A27AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FDDDE2F-92DB-4C4C-B2BE-1CFCE3A27AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

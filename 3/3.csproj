@@ -36,7 +36,20 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Qowaiv, Version=6.0.0.0, Culture=neutral, PublicKeyToken=0e6640b5f269a3fc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qowaiv.6.0.0\lib\netstandard2.0\Qowaiv.dll</HintPath>
+    </Reference>
+    <Reference Include="Qowaiv.Validation.Abstractions, Version=0.3.0.0, Culture=neutral, PublicKeyToken=0e6640b5f269a3fc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qowaiv.Validation.Abstractions.0.3.0\lib\netstandard2.0\Qowaiv.Validation.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Qowaiv.Validation.DataAnnotations, Version=1.4.0.0, Culture=neutral, PublicKeyToken=0e6640b5f269a3fc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qowaiv.Validation.DataAnnotations.1.4.0\lib\netstandard2.0\Qowaiv.Validation.DataAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\FileType.cs" />
+    <Compile Include="Abstractions\SortActions.cs" />
     <Compile Include="Abstractions\FindActions.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
@@ -93,9 +107,11 @@
     <Compile Include="Forms\SortBySomething.Designer.cs">
       <DependentUpon>SortBySomething.cs</DependentUpon>
     </Compile>
+    <Compile Include="Other\StatusManager.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\BookFile.cs" />
     <Compile Include="Models\Publisher.cs" />
+    <Compile Include="Other\UDCValidationAttribute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\About.resx">
@@ -128,6 +144,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Json\BOOKS.json" />
+    <None Include="Json\FIND_BY_PAGES.json" />
+    <None Include="Json\FIND_BY_PUBLISHER.json" />
+    <None Include="Json\FIND_BY_YEAR.json" />
+    <None Include="Json\SORT_BY_NAME.json" />
+    <None Include="Json\SORT_BY_UPLOAD_DATE.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

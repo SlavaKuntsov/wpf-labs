@@ -1,0 +1,25 @@
+[
+  {
+    "Name": "454",
+    "BookType": "PDF",
+    "FileSize": "554 MB",
+    "PageCount": 5445,
+    "UDC": "455.45",
+    "Year": 2024,
+    "UploadDate": "2024-03-06T19:38:55.1155352+03:00",
+    "Publisher": {
+      "Name": "5",
+      "Country": "5",
+      "City": "5",
+      "YearFounded": 2019,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "82b9d87e-357b-4792-9832-bdd6e26719f7",
+        "FullName": "5",
+        "Country": "5"
+      }
+    ]
+  }
+]

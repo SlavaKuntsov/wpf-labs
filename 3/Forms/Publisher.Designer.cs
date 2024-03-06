@@ -124,7 +124,6 @@ namespace _3.Forms
             this.BookInput1.Name = "BookInput1";
             this.BookInput1.Size = new System.Drawing.Size(458, 32);
             this.BookInput1.TabIndex = 4;
-            this.BookInput1.TextChanged += new System.EventHandler(this.BookInput1_TextChanged);
             // 
             // flowLayoutPanel3
             // 

@@ -1,0 +1,48 @@
+[
+  {
+    "Name": "454",
+    "BookType": "PDF",
+    "FileSize": "554 MB",
+    "PageCount": 5445,
+    "UDC": "455.45",
+    "Year": 2024,
+    "UploadDate": "2024-03-06T19:38:55.1155352+03:00",
+    "Publisher": {
+      "Name": "5",
+      "Country": "5",
+      "City": "5",
+      "YearFounded": 2019,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "82b9d87e-357b-4792-9832-bdd6e26719f7",
+        "FullName": "5",
+        "Country": "5"
+      }
+    ]
+  },
+  {
+    "Name": "а",
+    "BookType": "PDF",
+    "FileSize": "99 MB",
+    "PageCount": 43,
+    "UDC": "356.67",
+    "Year": 2024,
+    "UploadDate": "2024-03-06T19:52:07.0448812+03:00",
+    "Publisher": {
+      "Name": "слава",
+      "Country": "gddhg",
+      "City": "fhg",
+      "YearFounded": 2019,
+      "IsPrivate": false
+    },
+    "Authors": [
+      {
+        "ID": "d957c56e-1d6b-4400-b7fd-5e529d2186f5",
+        "FullName": "ву",
+        "Country": "в"
+      }
+    ]
+  }
+]

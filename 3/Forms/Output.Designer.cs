@@ -26,37 +26,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // DataGridView
-            // 
-            this.DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridView.GridColor = System.Drawing.Color.White;
-            this.DataGridView.Location = new System.Drawing.Point(0, 0);
-            this.DataGridView.Name = "DataGridView";
-            this.DataGridView.ReadOnly = true;
-            this.DataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.DataGridView.RowHeadersWidth = 72;
-            this.DataGridView.RowTemplate.Height = 31;
-            this.DataGridView.Size = new System.Drawing.Size(1842, 838);
-            this.DataGridView.TabIndex = 1;
-            // 
-            // OutputForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1842, 838);
-            this.Controls.Add(this.DataGridView);
-            this.Name = "OutputForm";
-            this.Text = "Output";
-            this.Load += new System.EventHandler(this.Output_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
-            this.ResumeLayout(false);
+			this.DataGridView = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// DataGridView
+			// 
+			this.DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.DataGridView.GridColor = System.Drawing.Color.White;
+			this.DataGridView.Location = new System.Drawing.Point(0, 0);
+			this.DataGridView.Name = "DataGridView";
+			this.DataGridView.ReadOnly = true;
+			this.DataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.DataGridView.RowHeadersWidth = 72;
+			this.DataGridView.RowTemplate.Height = 31;
+			this.DataGridView.Size = new System.Drawing.Size(2097, 838);
+			this.DataGridView.TabIndex = 1;
+			// 
+			// OutputForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(2097, 838);
+			this.Controls.Add(this.DataGridView);
+			this.Name = "OutputForm";
+			this.Text = "Output";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindBySomethingForm_FormClosed);
+			this.Load += new System.EventHandler(this.Output_Load);
+			((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+			this.ResumeLayout(false);
 
         }
 

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _3.Abstractions
 {
-    public enum FindActions
+    public enum SortActions
     {
-        Publisher,
-        Year,
-        Pages
+        None,
+        Name,
+        UploadDate
     }
 }
