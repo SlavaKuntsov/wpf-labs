@@ -1,0 +1,74 @@
+[
+  {
+    "ShortName": "4 Сыра",
+    "FullName": "Пицца 4 Сыра",
+    "Description": "оч вкусная пицца",
+    "Price": 21.0,
+    "Image": "cheesse.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png"
+  },
+  {
+    "ShortName": "Баварская",
+    "FullName": "Пицца Баварская",
+    "Description": "оч вкусная пицца",
+    "Price": 20.0,
+    "Image": "bav.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/bav.png"
+  },
+  {
+    "ShortName": "Карборана",
+    "FullName": "Пицца Карборана",
+    "Description": "оч вкусная пицца",
+    "Price": 18.0,
+    "Image": "karb.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/karb.png"
+  },
+  {
+    "ShortName": "Пепперони",
+    "FullName": "Пицца Пепперони",
+    "Description": "оч вкусная пицца",
+    "Price": 13.0,
+    "Image": "pep.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+  },
+  {
+    "ShortName": "Пепперони",
+    "FullName": "Пицца Пепперони",
+    "Description": "оч вкусная пицца",
+    "Price": 13.0,
+    "Image": "pep.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+  },
+  {
+    "ShortName": "Пепперони",
+    "FullName": "Пицца Пепперони",
+    "Description": "оч вкусная пицца",
+    "Price": 13.0,
+    "Image": "pep.png",
+    "Category": 0,
+    "Rating": 4,
+    "Count": 14,
+    "InStock": true,
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+  }
+]
