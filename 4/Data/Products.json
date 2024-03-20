@@ -9,7 +9,19 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "ShortName": "Баварская",
@@ -21,7 +33,19 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/bav.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/bav.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "ShortName": "Карборана",
@@ -33,7 +57,19 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/karb.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/karb.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "ShortName": "Пепперони",
@@ -45,7 +81,19 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "ShortName": "Пепперони",
@@ -57,7 +105,19 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "ShortName": "Пепперони",
@@ -69,6 +129,132 @@
     "Rating": 4,
     "Count": 14,
     "InStock": true,
-    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png"
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/pep.png",
+    "StringRating": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "ShortName": "1",
+    "FullName": "12",
+    "Description": "123",
+    "Price": 124.0,
+    "Image": "cheesse.png",
+    "Category": 0,
+    "Rating": 0,
+    "Count": 12,
+    "InStock": true,
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
+  },
+  {
+    "ShortName": "234",
+    "FullName": "4",
+    "Description": "34",
+    "Price": 432.0,
+    "Image": "cheesse.png",
+    "Category": 1,
+    "Rating": 0,
+    "Count": 23,
+    "InStock": true,
+    "PizzaSizes": 0,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
+  },
+  {
+    "ShortName": "df",
+    "FullName": "sdf",
+    "Description": "sfd",
+    "Price": 234.0,
+    "Image": "cheesse.png",
+    "Category": 1,
+    "Rating": 0,
+    "Count": 12,
+    "InStock": true,
+    "PizzaSizes": 0,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
+  },
+  {
+    "ShortName": "asd",
+    "FullName": "asdas",
+    "Description": "ads",
+    "Price": 234.0,
+    "Image": "cheesse.png",
+    "Category": 0,
+    "Rating": 0,
+    "Count": 20,
+    "InStock": true,
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
+  },
+  {
+    "ShortName": "пицца",
+    "FullName": "пицца такая то",
+    "Description": "чета там пицца",
+    "Price": 29.0,
+    "Image": "cheesse.png",
+    "Category": 0,
+    "Rating": 0,
+    "Count": 999,
+    "InStock": true,
+    "PizzaSizes": 2,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
+  },
+  {
+    "ShortName": "12",
+    "FullName": "12",
+    "Description": "12",
+    "Price": 12.0,
+    "Image": "cheesse.png",
+    "Category": 2,
+    "Rating": 0,
+    "Count": 12,
+    "InStock": true,
+    "PizzaSizes": 0,
+    "PizzaSizesDictionary": {
+      "Small": "Маленькая",
+      "Medium": "Средняя",
+      "Big": "Большая"
+    },
+    "ImageSource": "file:///C:/my/study/wpf/labs/4/Assets/pizza/cheesse.png",
+    "StringRating": []
   }
 ]

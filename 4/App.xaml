@@ -17,13 +17,22 @@
 					Source="./Theme/Text.xaml" />
 
 				<ResourceDictionary
-					Source="./Theme/ProductCard.xaml" />
+					Source="./Theme/TextBox.xaml" />
 
 				<ResourceDictionary
 					Source="./Theme/MenuButton.xaml" />
+
+				<ResourceDictionary
+					Source="./Theme/Button.xaml" />
+
+				<ResourceDictionary
+					Source="./Theme/SizeButton.xaml" />
 				
 				<ResourceDictionary
 					Source="./Theme/Page.xaml" />
+				
+				<ResourceDictionary
+					Source="./Theme/ScrollViewer.xaml" />
 
 				<ResourceDictionary
 					Source="./Utilities/DataTemplate.xaml" />

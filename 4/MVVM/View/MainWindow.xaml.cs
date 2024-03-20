@@ -1,12 +1,9 @@
 ﻿using System.Windows;
 
-using _4.MVVM.ViewModel;
-
 namespace _4
 {
 	public partial class MainWindow : Window
 	{
-		readonly NavigationViewModel navigation = new NavigationViewModel();
 		public MainWindow()
 		{
 			InitializeComponent();

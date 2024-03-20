@@ -53,6 +53,12 @@
     <StartupObject>_4.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSharpFunctionalExtensions, Version=2.41.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSharpFunctionalExtensions.2.41.0\lib\net461\CSharpFunctionalExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.11.9.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -97,8 +103,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MVVM\Model\PageModel.cs" />
+    <Compile Include="MVVM\ViewModel\AddProductViewModel.cs" />
     <Compile Include="MVVM\ViewModel\NavigationViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ProductCardViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ProductModalViewModel.cs" />
+    <Compile Include="MVVM\View\AddProductView.xaml.cs">
+      <DependentUpon>AddProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\CatalogView.xaml.cs">
       <DependentUpon>CatalogView.xaml</DependentUpon>
     </Compile>
@@ -108,11 +119,21 @@
     <Compile Include="MVVM\View\ProductCardView.xaml.cs">
       <DependentUpon>ProductCardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\ProductModalView.xaml.cs">
+      <DependentUpon>ProductModalView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\BaseViewModel.cs" />
-    <Compile Include="Utilities\ImageSourceConverter.cs" />
-    <Compile Include="Utilities\IsLessThanConverter.cs" />
+    <Compile Include="Utilities\Converter\CategoryToBooleanConverter.cs" />
+    <Compile Include="Utilities\Converter\CategoryToVisibilityConverter.cs" />
+    <Compile Include="Utilities\Converter\ImageSourceConverter.cs" />
+    <Compile Include="Utilities\Converter\IsLessThanConverter.cs" />
+    <Compile Include="Utilities\ProductModelValidator.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
-    <Compile Include="Utilities\WidthConverter.cs" />
+    <Compile Include="Utilities\Converter\WidthConverter.cs" />
+    <Page Include="MVVM\View\AddProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\CatalogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,9 +150,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\ProductModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\SizeButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Theme\MenuButton.xaml">
       <SubType>Designer</SubType>
@@ -141,11 +174,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Theme\ProductCard.xaml">
+    <Page Include="Theme\ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Theme\Text.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

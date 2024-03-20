@@ -9,5 +9,6 @@ namespace _4.MVVM.Model
 	public class PageModel
 	{
 		public List<ProductModel> Products { get; set; }
+		public ProductModel AddedProduct { get; set; }
 	}
 }

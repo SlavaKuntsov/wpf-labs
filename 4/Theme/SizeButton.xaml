@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 	<Style
-		x:Key="MenuButton"
+		x:Key="RadioButton"
 		TargetType="RadioButton">
 		<Setter
 			Property="Template">
@@ -18,19 +18,29 @@
 									Name="Normal">
 									<Storyboard>
 										<ColorAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+											To="Transparent"
+											Duration="0:0:0.3" />
+										<ColorAnimation
 											Storyboard.TargetName="backgroundBrush"
 											Storyboard.TargetProperty="Color"
-											To="#282828"
-											Duration="0:0:0.3" />
+											To="#D0FF6D00"
+											Duration="0:0:0.4" />
 									</Storyboard>
 								</VisualState>
 								<VisualState
 									Name="MouseOver">
 									<Storyboard>
 										<ColorAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+											To="#FFFFFF"
+											Duration="0:0:0.4" />
+										<ColorAnimation
 											Storyboard.TargetName="backgroundBrush"
 											Storyboard.TargetProperty="Color"
-											To="#3E3E3E"
+											To="#D0FF6D00"
 											Duration="0:0:0.4" />
 									</Storyboard>
 								</VisualState>
@@ -42,25 +52,36 @@
 											Storyboard.TargetProperty="Color"
 											To="#EB8336"
 											Duration="0:0:0.4" />
+										<ColorAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+											To="#FFFFFF"
+											Duration="0:0:0.4" />
+										<ThicknessAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="BorderThickness"
+											To="1"
+											Duration="0:0:0.4" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Border
 							x:Name="border"
-							Height="45"
-							CornerRadius="13">
+							Height="auto"
+							CornerRadius="15"
+							BorderThickness="1"
+							BorderBrush="Transparent">
 							<Border.Background>
 								<SolidColorBrush
 									x:Name="backgroundBrush"
-									Color="#1D1D1D" />
+									Color="Transparent" />
 							</Border.Background>
 							<TextBlock
+								Padding="5 8"
 								Style="{StaticResource Text}"
-								FontSize="16"
-								Foreground="White"
+								FontSize="13"
 								Text="{TemplateBinding Property=Content}"
-								Margin="30 0 0 0"
 								VerticalAlignment="Center" />
 						</Border>
 					</Grid>
@@ -74,9 +95,6 @@
 		<Setter
 			Property="Background"
 			Value="Transparent" />
-		<Setter
-			Property="BorderThickness"
-			Value="0" />
 	</Style>
-	
+
 </ResourceDictionary>

@@ -9,6 +9,7 @@
 	Title="Pizza Shop"
 	WindowStyle="None"
 	WindowStartupLocation="CenterScreen"
+	Icon="../../Assets/pizza/karb.png"
 	Style="{StaticResource MainPage}">
 
 	<Window.DataContext>
@@ -161,9 +162,6 @@
 					<ContentControl
 						x:Name="Pages"
 						Content="{Binding CurrentView}" />
-					<!--<Frame 
-						x:Name="MainFrame"
-						Content="{Binding Content}"/>-->
 
 				</Grid>
 

@@ -1,0 +1,247 @@
+﻿<UserControl
+	x:Class="_4.MVVM.View.AddProductView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:u="clr-namespace:_4.Utilities"
+	xmlns:viewmodel="clr-namespace:_4.MVVM.ViewModel"
+	d:DataContext="{d:DesignInstance Type=viewmodel:AddProductViewModel}"
+	mc:Ignorable="d"
+	d:DesignHeight="450"
+	d:DesignWidth="800">
+
+	<UserControl.Resources>
+		<u:CategoryToBooleanConverter
+			x:Key="CategoryToBooleanConverter" />
+	</UserControl.Resources>
+
+	<StackPanel
+		Grid.Row="1"
+		Margin="20 0"
+		Orientation="Vertical">
+
+		<TextBlock
+			FontSize="18"
+			Margin="0 10 0 25"
+			Text="Добавление нового товара:"
+			Style="{StaticResource Text}" />
+
+		<StackPanel
+			Margin="0 0 0 20"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="Название (краткое):"
+				Style="{StaticResource Text}" />
+
+			<Border
+				CornerRadius="10"
+				BorderBrush="Gray"
+				BorderThickness="1"
+				Width="200"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center">
+
+				<TextBox
+					x:Name="ShortNameTextBox"
+					Text="{Binding ShortName, UpdateSourceTrigger=PropertyChanged}"
+					Style="{StaticResource TextBox}" />
+
+			</Border>
+
+		</StackPanel>
+
+		<StackPanel
+			Margin="0 0 0 20"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="Название (полное):"
+				Style="{StaticResource Text}" />
+
+			<Border
+				CornerRadius="10"
+				BorderBrush="Gray"
+				BorderThickness="1"
+				Width="400"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center">
+
+				<TextBox
+					x:Name="FullNameTextBox"
+					Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
+					Style="{StaticResource TextBox}" />
+
+			</Border>
+
+		</StackPanel>
+
+		<Grid
+			Margin="0 0 0 20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				Text="Описание:"
+				Style="{StaticResource Text}"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Left" />
+
+			<TextBox
+				Grid.Column="1"
+				Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+				x:Name="DescriptionTextBox"
+				Style="{StaticResource TextBox}" />
+
+		</Grid>
+
+		<StackPanel
+			Margin="0 0 0 20"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				Text="Категория:"
+				Style="{StaticResource Text}"
+				VerticalAlignment="Center" />
+
+			<RadioButton
+				x:Name="PizzaRadioButton"
+				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Pizza}"
+				Content="{Binding PizzaCategoryDictionary[Pizza]}"
+				Style="{StaticResource RadioButton}"/>
+			<RadioButton
+				x:Name="DessertRadioButton"
+				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Dessert}"
+				Content="{Binding PizzaCategoryDictionary[Dessert]}"
+				Style="{StaticResource RadioButton}" />
+			<RadioButton
+				x:Name="DrinkRadioButton"
+				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Drink}"
+				Content="{Binding PizzaCategoryDictionary[Drink]}"
+				Style="{StaticResource RadioButton}" />
+
+		</StackPanel>
+
+		<StackPanel
+			Margin="0 0 0 20"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="Рейтинг:"
+				Style="{StaticResource Text}" />
+
+			<Slider
+				x:Name="Slider"
+				Value="3"
+				Minimum="1"
+				Maximum="5"
+				Height="30"
+				Width="180"
+				TickFrequency="1"
+				TickPlacement="BottomRight"
+				IsSnapToTickEnabled="True"
+				ValueChanged="Slider_ValueChanged" />
+
+
+			<TextBlock
+				x:Name="SliderTextBlock"
+				Margin="20 0 0 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="{Binding ElementName=Slider, Path=Value}"
+				Style="{StaticResource Text}" />
+
+		</StackPanel>
+
+		<StackPanel
+			Margin="0 0 0 20"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="Количество:"
+				Style="{StaticResource Text}" />
+
+			<Border
+				CornerRadius="10"
+				BorderBrush="Gray"
+				BorderThickness="1"
+				MinWidth="35"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center">
+
+				<TextBox
+					x:Name="QuantityTextBox"
+					Text="{Binding CountString, UpdateSourceTrigger=PropertyChanged}"
+					PreviewKeyDown="TextBox_PreviewKeyDown"
+					PreviewTextInput="TextBox_PreviewTextInput"
+					Style="{StaticResource TextBox}" />
+
+			</Border>
+
+		</StackPanel>
+
+		<StackPanel
+			Margin="0 0 0 20"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+
+			<TextBlock
+				Margin="0 0 20 0"
+				FontSize="16"
+				VerticalAlignment="Center"
+				Text="Цена:"
+				Style="{StaticResource Text}" />
+
+			<Border
+				CornerRadius="10"
+				BorderBrush="Gray"
+				BorderThickness="1"
+				MinWidth="35"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center">
+
+				<TextBox
+					x:Name="PriceTextBox"
+					Text="{Binding PriceString, UpdateSourceTrigger=PropertyChanged}"
+					PreviewKeyDown="TextBox_PreviewKeyDown"
+					PreviewTextInput="TextBox_PreviewTextInput_WithDot"
+					Style="{StaticResource TextBox}" />
+
+			</Border>
+
+		</StackPanel>
+		
+		<Button
+			Command="{Binding SaveCommand}"	
+			Content="Создать"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center" 
+			Style="{StaticResource Button}"/>
+
+	</StackPanel>
+</UserControl>

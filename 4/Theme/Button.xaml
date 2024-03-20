@@ -3,13 +3,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 	<Style
-		x:Key="MenuButton"
-		TargetType="RadioButton">
+		x:Key="Button"
+		TargetType="Button">
 		<Setter
 			Property="Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="RadioButton">
+					TargetType="Button">
 					<Grid>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup
@@ -35,20 +35,30 @@
 									</Storyboard>
 								</VisualState>
 								<VisualState
-									Name="Checked">
+									Name="Pressed">
 									<Storyboard>
 										<ColorAnimation
 											Storyboard.TargetName="backgroundBrush"
 											Storyboard.TargetProperty="Color"
 											To="#EB8336"
-											Duration="0:0:0.4" />
+											Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState
+									Name="Disabled">
+									<Storyboard>
+										<ColorAnimation
+											Storyboard.TargetName="backgroundBrush"
+											Storyboard.TargetProperty="Color"
+											To="#1D1D1D"
+											Duration="0" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Border
 							x:Name="border"
-							Height="45"
+							Height="auto"
 							CornerRadius="13">
 							<Border.Background>
 								<SolidColorBrush
@@ -60,7 +70,7 @@
 								FontSize="16"
 								Foreground="White"
 								Text="{TemplateBinding Property=Content}"
-								Margin="30 0 0 0"
+								Margin="30 13"
 								VerticalAlignment="Center" />
 						</Border>
 					</Grid>
@@ -69,14 +79,11 @@
 		</Setter>
 
 		<Setter
-			Property="Margin"
-			Value="5,0,5,10" />
-		<Setter
 			Property="Background"
 			Value="Transparent" />
 		<Setter
 			Property="BorderThickness"
 			Value="0" />
 	</Style>
-	
+
 </ResourceDictionary>
