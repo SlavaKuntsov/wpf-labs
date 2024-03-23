@@ -26,12 +26,16 @@ namespace _4.MVVM.View
 			ListViewItem clickedItem = (ListViewItem)sender;
 
 			ProductModel selectedItem = (ProductModel)clickedItem.DataContext;
+
+			Guid id = selectedItem.Id;
+
 			string shortName = selectedItem.ShortName;
 			string fullName = selectedItem.FullName;
 			string description = selectedItem.Description;
 			double price = selectedItem.Price;
 			string imageName = selectedItem.Image;
 			PizzaCategories category = selectedItem.Category;
+			PizzaSizes size = selectedItem.Size;
 			Rating rating = selectedItem.Rating;
 			int count = selectedItem.Count;
 
@@ -40,14 +44,12 @@ namespace _4.MVVM.View
 			var PizzaSizesDictionary = productAbstraction.PizzaSizesDictionary;
 
 
-			var selectedProduct = ProductModel.Create(shortName, fullName, description, price, imageName, category, rating, count);
+			var selectedProduct = ProductModel.Create(id, shortName, fullName, description, price, imageName, category, size, rating, count);
 
 			if (selectedProduct.IsFailure)
 			{
 				MessageBox.Show(selectedProduct.Error);
 			}
-
-			//selectedProduct.Value.CreateImageSource(imageName);
 
 			CatalogGrid.Children.Add(new ProductModalView() { DataContext = new ProductModalViewModel(selectedProduct.Value, PizzaSizesDictionary) });
 		}

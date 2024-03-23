@@ -6,44 +6,26 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:_4.MVVM.View"
 	xmlns:u="clr-namespace:_4.Utilities"
+	xmlns:c="clr-namespace:_4.Utilities.Converter"
 	xmlns:viewmodel="clr-namespace:_4.MVVM.ViewModel"
 	d:DataContext="{d:DesignInstance Type=viewmodel:ProductModalViewModel}"
 	mc:Ignorable="d"
 	Background="Transparent">
 
 	<UserControl.Resources>
-		<u:CategoryToVisibilityConverter
+		<c:CategoryToVisibilityConverter
 			x:Key="CategoryToVisibilityConverter" />
+		<c:SizeToBooleanConverter
+			x:Key="SizeToBooleanConverter" />
 	</UserControl.Resources>
 
 	<Grid>
 
-
 		<Rectangle
+			x:Name="restangle"
 			Fill="#181818"
 			Opacity=".8"
 			MouseDown="Rectangle_MouseDown" />
-
-		<!--<Border
-			Background="#D0FF6D00"
-			Width="100"
-			Height="100">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="auto" />
-				</Grid.RowDefinitions>
-
-				<TextBlock
-					Text="Pizza"
-					Style="{StaticResource Text}" />
-
-			</Grid>
-		</Border>-->
 
 		<Border
 			Background="#dd6002"
@@ -57,19 +39,6 @@
 				Opacity="1"
 				Margin="10 0 0 0">
 
-				<!--<Grid.RowDefinitions>
-					<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="auto" />
-					-->
-				<!--<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="auto" />-->
-				<!--
-				</Grid.RowDefinitions>-->
-
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition
 						Width="auto" />
@@ -77,13 +46,61 @@
 						Width="auto" />
 				</Grid.ColumnDefinitions>
 
-				<Image
-					Source="{Binding Product.ImageSource}"
-					Width="250"
-					Height="auto"
-					Margin="5 5 50 5" />
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="*" />
+						<RowDefinition
+							Height="1" />
+					</Grid.RowDefinitions>
+
+					<Image
+						Source="{Binding Product.ImageSource}"
+						Width="250"
+						Height="auto"
+						Margin="5 5 50 5" />
+
+					<Button
+						Command="{Binding DeleteCommand}"
+						Click="Rectangle_MouseDown"
+						Background="#FFFF8000"
+						BorderThickness="0"
+						Padding="20 10"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top">
+						<Button.Template>
+							<ControlTemplate
+								TargetType="Button">
+								<Border
+									Padding="15 8"
+									Background="{TemplateBinding Background}"
+									BorderBrush="{TemplateBinding BorderBrush}"
+									BorderThickness="{TemplateBinding BorderThickness}"
+									CornerRadius="15">
+									<ContentPresenter
+										HorizontalAlignment="Center"
+										VerticalAlignment="Center" />
+								</Border>
+							</ControlTemplate>
+						</Button.Template>
+						<StackPanel
+							Orientation="Horizontal">
+							<Image
+								Width="20"
+								Height="20"
+								Source="/Assets/icons/delete.png" />
+
+							<TextBlock
+								Text="Удалить"
+								FontSize="14"
+								Style="{StaticResource Text}" />
+						</StackPanel>
+					</Button>
+					
+				</Grid>
 
 				<StackPanel
+					Width="190"
 					Grid.Column="1"
 					Orientation="Vertical"
 					HorizontalAlignment="Left">
@@ -103,7 +120,7 @@
 						Style="{StaticResource Text}"
 						HorizontalAlignment="Left" />
 
-						<!--Foreground="White"-->
+					<!--Foreground="White"-->
 					<TextBlock
 						Grid.Row="1"
 						FontSize="15"
@@ -155,7 +172,7 @@
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>
 
-						<!--Foreground="White"-->
+					<!--Foreground="White"-->
 					<TextBlock
 						FontSize="16"
 						FontWeight="Regular"
@@ -167,7 +184,7 @@
 						Margin="0 10"
 						Visibility="{Binding Product.Category, Converter={StaticResource CategoryToVisibilityConverter}}"
 						Orientation="Vertical">
-						
+
 						<TextBlock
 							Text="Размеры:"
 							Opacity=".8"
@@ -176,15 +193,17 @@
 							Style="{StaticResource Text}" />
 
 						<RadioButton
+							IsChecked="{Binding Product.Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Small}"
 							Content="{Binding PizzaSizesDictionary[Small]}"
 							Margin="0 0 0 5"
 							Style="{StaticResource RadioButton}" />
 						<RadioButton
-							IsChecked="True"
+							IsChecked="{Binding Product.Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Medium}"
 							Content="{Binding PizzaSizesDictionary[Medium]}"
 							Margin="0 0 0 5"
 							Style="{StaticResource RadioButton}" />
 						<RadioButton
+							IsChecked="{Binding Product.Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Big}"
 							Content="{Binding PizzaSizesDictionary[Big]}"
 							Margin="0 0 0 5"
 							Style="{StaticResource RadioButton}" />
@@ -223,7 +242,7 @@
 							</TextBlock>
 						</StackPanel>
 
-						<Button
+						<!--<Button
 							Grid.Column="1"
 							Background="#FFFF8000"
 							BorderThickness="0"
@@ -249,7 +268,7 @@
 								FontSize="14"
 								Padding="20 5"
 								Style="{StaticResource Text}" />
-						</Button>
+						</Button>-->
 					</Grid>
 				</StackPanel>
 

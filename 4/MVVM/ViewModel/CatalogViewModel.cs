@@ -1,59 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Windows;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.Windows.Media;
 
 using _4.MVVM.Model;
+using _4.Utilities;
 
-using Newtonsoft.Json;
+using static _4.Abstractions.ProductAbstraction;
 
 namespace _4.MVVM.ViewModel
 {
 	public class CatalogViewModel : Utilities.BaseViewModel
 	{
 		private readonly PageModel _pageModel;
-		public List<ProductModel> Products
-		{
-			get { return _pageModel.Products; }
-			set { _pageModel.Products = value; OnPropertyChanged(nameof(Products)); }
-		}
+		private DataManager _dataManager;
 
-		private const string dataPath = "../../Data/Products.json";
+		//public Dictionary<PizzaCategories, string> PizzaCategoryDictionary { get; set; }
+		//JsonActions json = new JsonActions();
 
 
 		public CatalogViewModel()
 		{
 			_pageModel = new PageModel();
+			_dataManager = DataManager.Instance;
 
-			//Products = new List<ProductModel>()
+			Products = _dataManager.GetAllProducts();
+			Products.CollectionChanged += Products_CollectionChanged;
+
+			//var products = json.GetAllProducts();
+
+			//if (products.IsFailure)
 			//{
-			//	new ProductModel("4 Сыра", "pizzaaa", "оч вкусная пицца", 21, "cheesse.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//	new ProductModel("Баварская", "pizzaaa", "оч вкусная пицца", 20, "bav.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//	new ProductModel("Карбонара", "pizzaaa", "оч вкусная пицца", 18, "karb.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//	new ProductModel("Пепперони", "pizzaaa", "оч вкусная пицца", 13, "pep.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//	new ProductModel("Пепперони", "pizzaaa", "оч вкусная пицца", 13, "pep.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//	new ProductModel("Пепперони", "pizzaaa", "оч вкусная пицца", 13, "pep.png", Abstractions.ProductAbstraction.PizzaCategories.Pizza, Abstractions.ProductAbstraction.Rating.Four, 14),
-			//};
+			//	Products = null;
+			//	Console.WriteLine(products.Error);
+			//}
 
-			JsonSerializerSettings options = new JsonSerializerSettings
-			{
-				Formatting = Formatting.Indented,
-				NullValueHandling = NullValueHandling.Ignore
-			};
+			//Products = products.Value;
+		}
 
-			if (File.Exists(dataPath))
-			{
-				string jsonRead = File.ReadAllText(dataPath);
-				Products = JsonConvert.DeserializeObject<List<ProductModel>>(jsonRead, options);
+		private void Products_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			Console.WriteLine("ИЗМЕНЕН-------------------------------------");
+			Products = _dataManager.GetAllProducts();
+		}
 
-				string jsonWrite = JsonConvert.SerializeObject(Products, Formatting.Indented);
-				File.WriteAllText(dataPath, jsonWrite);
-			}
-			else
-			{
-				Console.WriteLine("NOT EXIST");
-				MessageBox.Show("NOT EXIST");
-			}
+		public ObservableCollection<ProductModel> Products
+		{
+			get { return _pageModel.Products; }
+			set { _pageModel.Products = value; OnPropertyChanged(nameof(Products)); }
 		}
 	}
 }

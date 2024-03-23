@@ -6,13 +6,14 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:vm="clr-namespace:_4.MVVM.ViewModel"
 	xmlns:u="clr-namespace:_4.Utilities"
+	xmlns:c="clr-namespace:_4.Utilities.Converter"
 	d:DataContext="{d:DesignInstance Type=vm:CatalogViewModel}"
 	mc:Ignorable="d"
 	d:Width="800"
 	d:Height="400">
 
 	<UserControl.Resources>
-		<u:WidthConverter
+		<c:WidthConverter
 			x:Key="WidthConverter" />
 	</UserControl.Resources>
 
@@ -35,6 +36,7 @@
 		</u:ProductModal>-->
 
 		<ListView
+			Padding="10 0"
 			Grid.Row="1"
 			Background="Transparent"
 			BorderBrush="Transparent"
@@ -50,6 +52,56 @@
 						HorizontalAlignment="Center" />
 				</ItemsPanelTemplate>
 			</ListView.ItemsPanel>
+
+			<ListView.Resources>
+				<Style
+					TargetType="ScrollBar">
+					<Setter
+						Property="Background"
+						Value="Gray" />
+					<Setter
+						Property="Width"
+						Value="10" />
+					<Setter
+						Property="Template">
+						<Setter.Value>
+							<ControlTemplate
+								TargetType="ScrollBar">
+								<Grid>
+									<Border
+										Background="#101010"
+										BorderBrush="Transparent"
+										BorderThickness="0"
+										CornerRadius="7" />
+									<Track
+										x:Name="PART_Track"
+										IsDirectionReversed="True">
+										<Track.DecreaseRepeatButton>
+											<RepeatButton
+												Command="{x:Static ScrollBar.PageUpCommand}"
+												Opacity="0" />
+										</Track.DecreaseRepeatButton>
+										<Track.Thumb>
+											<Thumb
+												Padding="0"
+												Margin="0"
+												Background="#202020"
+												BorderBrush="Transparent"
+												BorderThickness="0" />
+										</Track.Thumb>
+										<Track.IncreaseRepeatButton>
+											<RepeatButton
+												Command="{x:Static ScrollBar.PageDownCommand}"
+												Opacity="0" />
+										</Track.IncreaseRepeatButton>
+									</Track>
+								</Grid>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ListView.Resources>
+			
 			<ListView.ItemContainerStyle>
 				<Style
 					TargetType="ListViewItem">
@@ -65,7 +117,7 @@
 					<Setter
 						Property="BorderThickness"
 						Value="0" />
-					
+
 					<Setter
 						Property="Template">
 						<Setter.Value>
@@ -79,7 +131,7 @@
 									CornerRadius="15"
 									Margin="18 15"
 									Padding="15 10">
-									
+
 									<Grid
 										Margin="10 0 0 0">
 
@@ -164,7 +216,7 @@
 												<TextBlock
 													Text="Купить"
 													FontSize="14"
-													Padding="20 5"
+													Padding="10 4"
 													Style="{StaticResource Text}" />
 											</Button>
 										</Grid>

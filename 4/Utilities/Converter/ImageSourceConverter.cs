@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace _4.Utilities
+namespace _4.Utilities.Converter
 {
 	internal class ImageSourceConverter : IValueConverter
 	{

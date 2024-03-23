@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using _4.Abstractions;
-using _4.MVVM.Model;
 using _4.MVVM.ViewModel;
-
-using static _4.Abstractions.ProductAbstraction;
 
 namespace _4.MVVM.View
 {
@@ -29,31 +15,30 @@ namespace _4.MVVM.View
 	{
 		AddProductViewModel add;
 
-
-
 		public AddProductView()
 		{
 			InitializeComponent();
 
 			var productAbstraction = new ProductAbstraction();
 			var PizzaCategoryDictionary = productAbstraction.PizzaCategoriesDictionary;
+			var PizzaSizesDictionary = productAbstraction.PizzaSizesDictionary;
 
-			add = new AddProductViewModel(PizzaCategoryDictionary);
+			add = new AddProductViewModel(PizzaCategoryDictionary, PizzaSizesDictionary);
 			DataContext = add;
 		}
 
-		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-		{
-			var slider = (Slider)sender;
-			var value = slider.Value;
-			var textBlock = (TextBlock)FindName("SliderTextBlock");
+		//private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		//{
+		//	var slider = (Slider)sender;
+		//	var value = slider.Value;
+		//	var textBlock = (TextBlock)FindName("SliderTextBlock");
 
-			slider.SelectionEnd = e.NewValue;
-			if (textBlock != null)
-			{
-				textBlock.Text = value.ToString();
-			}
-		}
+		//	slider.SelectionEnd = e.NewValue;
+		//	if (textBlock != null)
+		//	{
+		//		textBlock.Text = value.ToString();
+		//	}
+		//}
 
 		private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
 		{

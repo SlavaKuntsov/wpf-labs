@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 using _4.Abstractions;
 using _4.MVVM.Model;
@@ -12,18 +10,32 @@ namespace _4.MVVM.ViewModel
 {
 	public class ProductModalViewModel : BaseViewModel
 	{
-		private ProductModel _products;
+		public ICommand DeleteCommand { get; set; }
+
+		public Dictionary<ProductAbstraction.PizzaSizes, string> PizzaSizesDictionary { get; set; }
+		public event EventHandler CloseRequested;
+
+		private ProductModel _product;
 		public ProductModel Product
 		{
-			get { return _products; }
-			set { _products = value; OnPropertyChanged(nameof(Product)); }
+			get { return _product; }
+			set { _product = value; OnPropertyChanged(nameof(Product)); }
 		}
-		public Dictionary<ProductAbstraction.PizzaSizes, string> PizzaSizesDictionary { get; set; }
 
 		public ProductModalViewModel(ProductModel product, Dictionary<ProductAbstraction.PizzaSizes, string> pizzaSizesDictionary)
 		{
 			Product = product;
+	
 			PizzaSizesDictionary = pizzaSizesDictionary;
+
+			DeleteCommand = new RelayCommand(Delete);
+		}
+
+		private void Delete(object obj)
+		{
+			DataManager.Instance.DeleteProduct(_product.Id);
+
+			Console.WriteLine("Элемент успешно удален из JSON.");
 		}
 	}
 }

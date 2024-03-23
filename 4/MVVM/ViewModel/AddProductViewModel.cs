@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
+using _4.Abstractions;
 using _4.MVVM.Model;
 using _4.Utilities;
 
-using Newtonsoft.Json;
+using Microsoft.Win32;
 
 using static _4.Abstractions.ProductAbstraction;
 
@@ -15,24 +18,36 @@ namespace _4.MVVM.ViewModel
 {
 	public class AddProductViewModel : BaseViewModel
 	{
+		private readonly PageModel _pageModel;
+		//private DataManager _dataManager;
+
 		public ICommand SaveCommand { get; set; }
+		public ICommand OpenImageFileCommand { get; set; }
 		public Dictionary<PizzaCategories, string> PizzaCategoryDictionary { get; set; }
-
-		private const string dataPath = "../../Data/Products.json";
-
-		public AddProductViewModel(Dictionary<PizzaCategories, string> pizzaCategoryDictionary)
+		public Dictionary<PizzaSizes, string> PizzaSizesDictionary { get; set; }
+		
+		public AddProductViewModel(Dictionary<PizzaCategories, string> pizzaCategoryDictionary, Dictionary<PizzaSizes, string> pizzaSizesDictionary)
 		{
+			_pageModel = new PageModel();
+			//_dataManager = DataManager.Instance;
+
 			_product = new ProductModel();
 			Category = PizzaCategories.Pizza;
 
 			PizzaCategoryDictionary = pizzaCategoryDictionary;
+			PizzaSizesDictionary = pizzaSizesDictionary;
+
+			SliderValue = 4;
+			Size = PizzaSizes.Medium;
 
 			SaveCommand = new RelayCommand(Save);
+			OpenImageFileCommand = new RelayCommand(OpenImageFile);
 		}
 
 		private void Save(object obj)
 		{
-			var addedProduct = ProductModel.Create(ShortName, FullName, Description, Price, "cheesse.png", Category, Rating, Count);
+			Console.WriteLine("before create rating: " + Rating);
+			var addedProduct = ProductModel.Create(Guid.NewGuid(), ShortName, FullName, Description, Price, Image, Category, Size, Rating, Count);
 
 			if (addedProduct.IsFailure)
 			{
@@ -40,33 +55,65 @@ namespace _4.MVVM.ViewModel
 				return;
 			}
 
-			SaveToFile(addedProduct.Value);
+			DataManager.Instance.AddProduct(addedProduct.Value);
+			//_dataManager.AddProduct(addedProduct.Value);
+			//json.WriteNewProduct(addedProduct.Value);
+
+			ResetAll();
 		}
 
-		private void SaveToFile(ProductModel product)
+		private void ResetAll()
 		{
-			JsonSerializerSettings options = new JsonSerializerSettings
+			ShortName = "";
+			FullName = "";
+			Description = "";
+			Image = "";
+			SelectedImage = BitmapImage.Create(
+				2,
+				2,
+				96,
+				96,
+				PixelFormats.Indexed1,
+				new BitmapPalette(new List<Color> { Colors.Transparent }),
+				new byte[] { 0, 0, 0, 0 },
+				1);
+			Category = PizzaCategories.Pizza;
+			Size = PizzaSizes.Big;
+			SliderValue = 4;
+			PriceString = "";
+			CountString = "";
+		}
+
+		private void OpenImageFile(object obj)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+
+			//string currentDirectory = Directory.GetCurrentDirectory();
+			//string initialDirectory = Path.Combine(currentDirectory, "..", "..", "..", "Assets", "pizza");
+
+			//openFileDialog.InitialDirectory = Path.GetFullPath(initialDirectory);
+
+			string initialDirectory = @"C:\my\study\wpf\labs\4\Assets\pizza";
+
+			openFileDialog.InitialDirectory = initialDirectory;
+			openFileDialog.Filter = "Image Files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg";
+
+			if (openFileDialog.ShowDialog() == true)
 			{
-				Formatting = Formatting.Indented,
-				NullValueHandling = NullValueHandling.Ignore
-			};
+				string selectedImagePath = openFileDialog.FileName;
 
-			if (File.Exists(dataPath))
-			{
-				string jsonRead = File.ReadAllText(dataPath);
-				List<ProductModel> products = JsonConvert.DeserializeObject<List<ProductModel>>(jsonRead, options);
+				string selectedImageName = Path.GetFileName(selectedImagePath);
 
-				products.Add(product);
+				BitmapImage bitmapImage = new BitmapImage(new Uri(selectedImagePath));
 
-				string jsonWrite = JsonConvert.SerializeObject(products, Formatting.Indented);
-				File.WriteAllText(dataPath, jsonWrite);
+				SelectedImage = bitmapImage;
+				Image = selectedImageName;
 			}
 			else
 			{
-				Console.WriteLine("NOT EXIST");
+				SelectedImage = null;
 			}
 		}
-
 
 		private ProductModel _product { get; set; }
 		public ProductModel Product
@@ -89,26 +136,75 @@ namespace _4.MVVM.ViewModel
 			get { return _product.Description; }
 			set { _product.Description = value; OnPropertyChanged(nameof(Description)); }
 		}
+		public string Image
+		{
+			get { return _product.Image; }
+			set { _product.Image = value; OnPropertyChanged(nameof(Image)); }
+		}
+		private ImageSource _selectedImage;
+		public ImageSource SelectedImage
+		{
+			get { return _selectedImage; }
+			set
+			{
+				_selectedImage = value;
+				OnPropertyChanged(nameof(SelectedImage));
+			}
+		}
 		public PizzaCategories Category
 		{
 			get { return _product.Category; }
-			set { _product.Category = value; OnPropertyChanged(nameof(Category)); }
-		}
-		public double SliderValue
-		{
-			get { return SliderValue; }
 			set
 			{
-				SliderValue = value;
+				_product.Category = value;
+				OnPropertyChanged(nameof(Category));
+
+				if (Category == PizzaCategories.Pizza)
+				{
+					SizesVisibility = true;
+					Console.WriteLine(_sizesVisibility);
+				}
+				else
+				{
+					SizesVisibility = false;
+					Console.WriteLine(_sizesVisibility);
+				}
+			}
+		}
+		private bool _sizesVisibility { get; set; }
+		public bool SizesVisibility
+		{
+			get { return _sizesVisibility; }
+			set { _sizesVisibility = value; OnPropertyChanged(nameof(SizesVisibility)); }
+		}
+		public PizzaSizes Size
+		{
+			get { return _product.Size; }
+			set
+			{
+				_product.Size = value;
+				OnPropertyChanged(nameof(Size)); 
+				Console.WriteLine("size value: " + value);
+			}
+		}
+		private double _sliderValue { get; set; }
+		public double SliderValue
+		{
+			get { return _sliderValue; }
+			set
+			{
+				_sliderValue = value;
 				OnPropertyChanged(nameof(SliderValue));
+				Console.WriteLine("SliderValue: " + value);
 				Rating convertRating = ConvertSliderValueToRating(value);
+				Console.WriteLine("convertRating: " + convertRating);
 				Rating = convertRating;
 			}
 		}
 		public Rating Rating
 		{
 			get { return _product.Rating; }
-			set { _product.Rating = value; OnPropertyChanged(nameof(Rating)); }
+			set { _product.Rating = value; Console.WriteLine("rating value: " + value); OnPropertyChanged(nameof(Rating)); }
 		}
 		private string _priceString;
 		public string PriceString

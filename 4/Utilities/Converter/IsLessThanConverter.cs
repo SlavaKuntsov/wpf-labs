@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace _4.Utilities
+namespace _4.Utilities.Converter
 {
 	public class IsLessThanConverter : IValueConverter
 	{

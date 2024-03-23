@@ -12,7 +12,7 @@
 			Value="1180" />
 		<Setter
 			Property="Height"
-			Value="700" />
+			Value="750" />
 		<Setter
 			Property="ResizeMode"
 			Value="CanResizeWithGrip" />

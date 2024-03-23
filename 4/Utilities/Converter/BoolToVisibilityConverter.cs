@@ -7,23 +7,28 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
-using static _4.Abstractions.ProductAbstraction;
-
 namespace _4.Utilities.Converter
 {
-	public class CategoryToVisibilityConverter : IValueConverter
+	public class BoolToVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			PizzaCategories category = (PizzaCategories)value;
+			if (value is bool boolValue)
+			{
+				return boolValue ? Visibility.Visible : Visibility.Hidden;
+			}
 
-			// Возвращаем Visibility.Visible, если категория равна PizzaCategories.Pizza, иначе - Visibility.Collapsed
-			return category == PizzaCategories.Pizza ? Visibility.Visible : Visibility.Collapsed;
+			return DependencyProperty.UnsetValue;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			throw new NotImplementedException();
+			if (value is Visibility visibility)
+			{
+				return visibility == Visibility.Visible;
+			}
+
+			return DependencyProperty.UnsetValue;
 		}
 	}
 }

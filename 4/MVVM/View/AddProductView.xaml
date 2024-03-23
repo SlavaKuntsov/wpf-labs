@@ -5,207 +5,386 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:u="clr-namespace:_4.Utilities"
+	xmlns:c="clr-namespace:_4.Utilities.Converter"
 	xmlns:viewmodel="clr-namespace:_4.MVVM.ViewModel"
-	d:DataContext="{d:DesignInstance Type=viewmodel:AddProductViewModel}"
+	d:DataContext="{d:DesignInstance Type=viewmodel:CatalogViewModel}"
 	mc:Ignorable="d"
 	d:DesignHeight="450"
 	d:DesignWidth="800">
 
 	<UserControl.Resources>
-		<u:CategoryToBooleanConverter
+		<c:CategoryToBooleanConverter
 			x:Key="CategoryToBooleanConverter" />
+		<c:SizeToBooleanConverter
+			x:Key="SizeToBooleanConverter" />
+		<c:BoolToVisibilityConverter
+			x:Key="BoolToVisibilityConverter" />
+		<!--<c:ContentFitsToVisibilityConverter
+			x:Key="ContentFitsToVisibilityConverter" />-->
 	</UserControl.Resources>
 
-	<StackPanel
-		Grid.Row="1"
-		Margin="20 0"
-		Orientation="Vertical">
+	<ScrollViewer
+		x:Name="scrollViewer">
 
-		<TextBlock
-			FontSize="18"
-			Margin="0 10 0 25"
-			Text="Добавление нового товара:"
-			Style="{StaticResource Text}" />
+		<ScrollViewer.Resources>
+			<Style
+				TargetType="ScrollBar">
+				<Setter
+					Property="Background"
+					Value="Gray" />
+				<Setter
+					Property="Width"
+					Value="10" />
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="ScrollBar">
+							<Grid>
+								<Border
+									Background="Transparent"
+									BorderBrush="Transparent"
+									BorderThickness="0"
+									CornerRadius="7" />
+								<Track
+									x:Name="PART_Track"
+									IsDirectionReversed="True">
+									<Track.DecreaseRepeatButton>
+										<RepeatButton
+											Command="{x:Static ScrollBar.PageUpCommand}"
+											Opacity="0" />
+									</Track.DecreaseRepeatButton>
+									<Track.Thumb>
+										<Thumb
+											Padding="0"
+											Margin="0"
+											Background="#202020"
+											BorderBrush="Transparent"
+											BorderThickness="0" />
+									</Track.Thumb>
+									<Track.IncreaseRepeatButton>
+										<RepeatButton
+											Command="{x:Static ScrollBar.PageDownCommand}"
+											Opacity="0" />
+									</Track.IncreaseRepeatButton>
+								</Track>
+							</Grid>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ScrollViewer.Resources>
+
+		<!--<ScrollViewer.Visibility>
+			<MultiBinding
+				Converter="{StaticResource ContentFitsToVisibilityConverter}">
+				<Binding
+					ElementName="stackPanel"
+					Path="ActualHeight" />
+				<Binding
+					RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+			</MultiBinding>
+		</ScrollViewer.Visibility>-->
 
 		<StackPanel
-			Margin="0 0 0 20"
-			VerticalAlignment="Center"
-			Orientation="Horizontal">
+			x:Name="stackPanel"
+			Margin="20,1,20,-1"
+			Orientation="Vertical">
 
 			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				VerticalAlignment="Center"
-				Text="Название (краткое):"
+				FontSize="18"
+				Margin="0 10 0 25"
+				Text="Добавление нового товара:"
 				Style="{StaticResource Text}" />
 
-			<Border
-				CornerRadius="10"
-				BorderBrush="Gray"
-				BorderThickness="1"
-				Width="200"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center">
+			<StackPanel
+				Margin="0 0 0 20"
+				VerticalAlignment="Center"
+				Orientation="Horizontal">
+
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Изображение:"
+					Style="{StaticResource Text}" />
+
+				<Image
+					Source="{Binding SelectedImage}"
+					Width="80"
+					Height="80" />
+
+				<!--<Button 
+				Command="{Binding OpenImageFileCommand}"
+				Margin="20 0 0 0"
+				Content="Выбрать"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Style="{StaticResource Button}"/>-->
+
+				<Button
+					Command="{Binding OpenImageFileCommand}"
+					Background="#FFFF8000"
+					BorderThickness="0"
+					Padding="15 7"
+					Margin="20 0 0 0"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center">
+					<Button.Template>
+						<ControlTemplate
+							TargetType="Button">
+							<Border
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								CornerRadius="15">
+								<ContentPresenter
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center" />
+							</Border>
+						</ControlTemplate>
+					</Button.Template>
+					<TextBlock
+						Text="Выбрать"
+						FontSize="14"
+						Padding="20 5"
+						Style="{StaticResource Text}" />
+				</Button>
+
+			</StackPanel>
+
+			<Grid
+				Margin="0 0 0 20">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="*"
+						MaxWidth="200" />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Название (краткое):"
+					Style="{StaticResource Text}" />
 
 				<TextBox
+					Grid.Column="1"
 					x:Name="ShortNameTextBox"
 					Text="{Binding ShortName, UpdateSourceTrigger=PropertyChanged}"
 					Style="{StaticResource TextBox}" />
 
-			</Border>
 
-		</StackPanel>
+			</Grid>
 
-		<StackPanel
-			Margin="0 0 0 20"
-			VerticalAlignment="Center"
-			Orientation="Horizontal">
+			<Grid
+				Margin="0 0 0 20">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="*"
+						MaxWidth="400" />
+				</Grid.ColumnDefinitions>
 
-			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				VerticalAlignment="Center"
-				Text="Название (полное):"
-				Style="{StaticResource Text}" />
-
-			<Border
-				CornerRadius="10"
-				BorderBrush="Gray"
-				BorderThickness="1"
-				Width="400"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center">
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Название (полное):"
+					Style="{StaticResource Text}" />
 
 				<TextBox
+					Grid.Column="1"
 					x:Name="FullNameTextBox"
 					Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
 					Style="{StaticResource TextBox}" />
 
-			</Border>
 
-		</StackPanel>
+			</Grid>
 
-		<Grid
-			Margin="0 0 0 20">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition
-					Width="auto" />
-				<ColumnDefinition
-					Width="*" />
-			</Grid.ColumnDefinitions>
+			<Grid
+				Margin="0 0 0 20">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="*" />
+				</Grid.ColumnDefinitions>
 
-			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				Text="Описание:"
-				Style="{StaticResource Text}"
-				VerticalAlignment="Center"
-				HorizontalAlignment="Left" />
-
-			<TextBox
-				Grid.Column="1"
-				Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-				x:Name="DescriptionTextBox"
-				Style="{StaticResource TextBox}" />
-
-		</Grid>
-
-		<StackPanel
-			Margin="0 0 0 20"
-			Orientation="Horizontal">
-
-			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				Text="Категория:"
-				Style="{StaticResource Text}"
-				VerticalAlignment="Center" />
-
-			<RadioButton
-				x:Name="PizzaRadioButton"
-				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Pizza}"
-				Content="{Binding PizzaCategoryDictionary[Pizza]}"
-				Style="{StaticResource RadioButton}"/>
-			<RadioButton
-				x:Name="DessertRadioButton"
-				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Dessert}"
-				Content="{Binding PizzaCategoryDictionary[Dessert]}"
-				Style="{StaticResource RadioButton}" />
-			<RadioButton
-				x:Name="DrinkRadioButton"
-				IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Drink}"
-				Content="{Binding PizzaCategoryDictionary[Drink]}"
-				Style="{StaticResource RadioButton}" />
-
-		</StackPanel>
-
-		<StackPanel
-			Margin="0 0 0 20"
-			VerticalAlignment="Center"
-			Orientation="Horizontal">
-
-			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				VerticalAlignment="Center"
-				Text="Рейтинг:"
-				Style="{StaticResource Text}" />
-
-			<Slider
-				x:Name="Slider"
-				Value="3"
-				Minimum="1"
-				Maximum="5"
-				Height="30"
-				Width="180"
-				TickFrequency="1"
-				TickPlacement="BottomRight"
-				IsSnapToTickEnabled="True"
-				ValueChanged="Slider_ValueChanged" />
-
-
-			<TextBlock
-				x:Name="SliderTextBlock"
-				Margin="20 0 0 0"
-				FontSize="16"
-				VerticalAlignment="Center"
-				Text="{Binding ElementName=Slider, Path=Value}"
-				Style="{StaticResource Text}" />
-
-		</StackPanel>
-
-		<StackPanel
-			Margin="0 0 0 20"
-			VerticalAlignment="Center"
-			Orientation="Horizontal">
-
-			<TextBlock
-				Margin="0 0 20 0"
-				FontSize="16"
-				VerticalAlignment="Center"
-				Text="Количество:"
-				Style="{StaticResource Text}" />
-
-			<Border
-				CornerRadius="10"
-				BorderBrush="Gray"
-				BorderThickness="1"
-				MinWidth="35"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center">
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					Text="Описание:"
+					Style="{StaticResource Text}"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Left" />
 
 				<TextBox
-					x:Name="QuantityTextBox"
-					Text="{Binding CountString, UpdateSourceTrigger=PropertyChanged}"
-					PreviewKeyDown="TextBox_PreviewKeyDown"
-					PreviewTextInput="TextBox_PreviewTextInput"
+					Grid.Column="1"
+					Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+					x:Name="DescriptionTextBox"
 					Style="{StaticResource TextBox}" />
 
-			</Border>
+			</Grid>
 
-		</StackPanel>
+			<WrapPanel
+				Margin="0 0 0 20"
+				Orientation="Horizontal">
 
-		<StackPanel
+				<StackPanel
+					Margin="0 0 20 0"
+					Orientation="Horizontal">
+
+					<TextBlock
+						Margin="0 0 20 0"
+						FontSize="16"
+						Text="Категория:"
+						Style="{StaticResource Text}"
+						VerticalAlignment="Center" />
+
+					<RadioButton
+						x:Name="PizzaRadioButton"
+						IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Pizza}"
+						Content="{Binding PizzaCategoryDictionary[Pizza]}"
+						Style="{StaticResource RadioButton}" />
+					<RadioButton
+						x:Name="DessertRadioButton"
+						IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Dessert}"
+						Content="{Binding PizzaCategoryDictionary[Dessert]}"
+						Style="{StaticResource RadioButton}" />
+					<RadioButton
+						x:Name="DrinkRadioButton"
+						IsChecked="{Binding Category, Mode=TwoWay, Converter={StaticResource CategoryToBooleanConverter}, ConverterParameter=Drink}"
+						Content="{Binding PizzaCategoryDictionary[Drink]}"
+						Style="{StaticResource RadioButton}" />
+
+				</StackPanel>
+
+
+				<StackPanel
+					Visibility="{Binding SizesVisibility, Converter={StaticResource BoolToVisibilityConverter}}"
+					Orientation="Horizontal">
+
+					<TextBlock
+						Margin="00 0 20 0"
+						FontSize="16"
+						Text="Размер:"
+						Style="{StaticResource Text}"
+						VerticalAlignment="Center" />
+
+					<RadioButton
+						IsChecked="{Binding Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Small}"
+						Content="{Binding PizzaSizesDictionary[Small]}"
+						Style="{StaticResource RadioButton}" />
+
+					<RadioButton
+						IsChecked="{Binding Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Medium}"
+						Content="{Binding PizzaSizesDictionary[Medium]}"
+						Style="{StaticResource RadioButton}" />
+
+					<RadioButton
+						IsChecked="{Binding Size, Mode=TwoWay, Converter={StaticResource SizeToBooleanConverter}, ConverterParameter=Big}"
+						Content="{Binding PizzaSizesDictionary[Big]}"
+						Style="{StaticResource RadioButton}" />
+
+
+				</StackPanel>
+
+			</WrapPanel>
+
+			<StackPanel
+				Margin="0 0 0 20"
+				VerticalAlignment="Center"
+				Orientation="Horizontal">
+
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Рейтинг:"
+					Style="{StaticResource Text}" />
+
+				<Slider
+					x:Name="Slider"
+					Value="{Binding SliderValue, Mode=TwoWay}"
+					Minimum="1"
+					Maximum="5"
+					Height="30"
+					Width="180"
+					TickFrequency="1"
+					TickPlacement="BottomRight"
+					IsSnapToTickEnabled="True" />
+
+
+				<TextBlock
+					x:Name="SliderTextBlock"
+					Margin="20 0 0 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="{Binding SliderValue}"
+					Style="{StaticResource Text}" />
+
+			</StackPanel>
+
+			<StackPanel
+				Margin="0 0 0 20"
+				VerticalAlignment="Center"
+				Orientation="Horizontal">
+
+				<TextBlock
+					Margin="0 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Количество:"
+					Style="{StaticResource Text}" />
+
+				<Border
+					CornerRadius="10"
+					BorderBrush="Gray"
+					BorderThickness="1"
+					MinWidth="35"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Center">
+
+					<TextBox
+						x:Name="QuantityTextBox"
+						Text="{Binding CountString, UpdateSourceTrigger=PropertyChanged}"
+						PreviewKeyDown="TextBox_PreviewKeyDown"
+						PreviewTextInput="TextBox_PreviewTextInput"
+						Style="{StaticResource TextBox}" />
+
+				</Border>
+
+				<TextBlock
+					Margin="60 0 20 0"
+					FontSize="16"
+					VerticalAlignment="Center"
+					Text="Цена:"
+					Style="{StaticResource Text}" />
+
+				<Border
+					CornerRadius="10"
+					BorderBrush="Gray"
+					BorderThickness="1"
+					MinWidth="35"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Center">
+
+					<TextBox
+						x:Name="PriceTextBox"
+						Text="{Binding PriceString, UpdateSourceTrigger=PropertyChanged}"
+						PreviewKeyDown="TextBox_PreviewKeyDown"
+						PreviewTextInput="TextBox_PreviewTextInput_WithDot"
+						Style="{StaticResource TextBox}" />
+
+				</Border>
+
+			</StackPanel>
+
+			<!--<StackPanel
 			Margin="0 0 0 20"
 			VerticalAlignment="Center"
 			Orientation="Horizontal">
@@ -234,14 +413,17 @@
 
 			</Border>
 
-		</StackPanel>
-		
-		<Button
-			Command="{Binding SaveCommand}"	
-			Content="Создать"
-			HorizontalAlignment="Left"
-			VerticalAlignment="Center" 
-			Style="{StaticResource Button}"/>
+		</StackPanel>-->
 
-	</StackPanel>
+			<Button
+				Command="{Binding SaveCommand}"
+				Content="Создать"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				Style="{StaticResource Button}" />
+
+		</StackPanel>
+
+	</ScrollViewer>
+
 </UserControl>

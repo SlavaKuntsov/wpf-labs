@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
+using _4.MVVM.Model;
 using _4.Utilities;
 
 namespace _4.MVVM.ViewModel
@@ -8,6 +9,7 @@ namespace _4.MVVM.ViewModel
 	internal class NavigationViewModel : BaseViewModel
 	{
 		private object _currentView;
+		//private DataManager _dataManager;
 		public object CurrentView
 		{
 			get { return _currentView; }
@@ -28,6 +30,9 @@ namespace _4.MVVM.ViewModel
 			// Startup Page
 			//CurrentView = new CatalogViewModel();
 			CurrentView = new HomeViewModel();
+		
+			//_dataManager = new DataManager();
+
 		}
 	}
 }

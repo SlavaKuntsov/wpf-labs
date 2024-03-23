@@ -16,7 +16,7 @@
 		<vm:NavigationViewModel />
 	</Window.DataContext>
 
-	<Grid>
+	<Grid x:Name="Project">
 		<Grid.RowDefinitions>
 			<RowDefinition
 				Height="25" />
@@ -47,7 +47,7 @@
 							Width="13"
 							Height="13"
 							Margin="2 0 2 0"
-							Source="/Assets/cross.png" />
+							Source="/Assets/icons/cross.png" />
 					</Button>
 					<Button
 						Style="{StaticResource ButtonMiniResize}"
@@ -57,7 +57,7 @@
 						<Image
 							Width="13"
 							Height="13"
-							Source="/Assets/square.png" />
+							Source="/Assets/icons/square.png" />
 					</Button>
 					<Button
 						Style="{StaticResource ButtonMiniResize}"
@@ -67,7 +67,7 @@
 						<Image
 							Width="16"
 							Height="11"
-							Source="/Assets/mini.png"
+							Source="/Assets/icons/mini.png"
 							VerticalAlignment="Bottom" />
 					</Button>
 				</StackPanel>
@@ -106,7 +106,6 @@
 						Text="Pizza Shop"
 						Style="{StaticResource Text}"
 						FontWeight="SemiBold"
-						VerticalAlignment="Center"
 						FontSize="21" />
 				</StackPanel>
 				<!--<StackPanel

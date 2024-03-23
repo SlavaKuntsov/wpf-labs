@@ -102,6 +102,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MVVM\Model\DataManager.cs" />
     <Compile Include="MVVM\Model\PageModel.cs" />
     <Compile Include="MVVM\ViewModel\AddProductViewModel.cs" />
     <Compile Include="MVVM\ViewModel\NavigationViewModel.cs" />
@@ -123,10 +124,14 @@
       <DependentUpon>ProductModalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\BaseViewModel.cs" />
+    <Compile Include="Utilities\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Utilities\Converter\ContentFitsToVisibilityConverter.cs" />
+    <Compile Include="Utilities\Converter\SizeToBooleanConverter.cs" />
     <Compile Include="Utilities\Converter\CategoryToBooleanConverter.cs" />
     <Compile Include="Utilities\Converter\CategoryToVisibilityConverter.cs" />
     <Compile Include="Utilities\Converter\ImageSourceConverter.cs" />
     <Compile Include="Utilities\Converter\IsLessThanConverter.cs" />
+    <Compile Include="Utilities\JsonActions.cs" />
     <Compile Include="Utilities\ProductModelValidator.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="Utilities\Converter\WidthConverter.cs" />
@@ -240,17 +245,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\cross.png">
+    <Resource Include="Assets\icons\cross.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\mini.png">
+    <Resource Include="Assets\icons\mini.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\square.png">
+    <Resource Include="Assets\icons\square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -271,6 +276,18 @@
     <Resource Include="Assets\pizza\cheesse.png" />
     <Resource Include="Assets\pizza\karb.png" />
     <Resource Include="Assets\pizza\pep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cursors\hello_kitty.cur" />
+    <Resource Include="Assets\cursors\pusheen.cur" />
+    <Resource Include="Assets\cursors\snoopy.cur" />
+    <Resource Include="Assets\cursors\tardis.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\pizza\default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

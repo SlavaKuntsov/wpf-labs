@@ -1,17 +1,27 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Input;
 
 namespace _4
 {
 	public partial class MainWindow : Window
 	{
+		Cursor cursor;
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			string cursorDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Assets\\cursors";
+			cursor = new Cursor($"{cursorDirectory}\\hello_kitty2.cur");
+
+			Project.Cursor = cursor;
 		}
 
-		private void DragWindow_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void DragWindow_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+			if (e.ChangedButton == MouseButton.Left)
 			{
 				DragMove();
 			}
